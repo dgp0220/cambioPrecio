@@ -1,0 +1,44 @@
+.menu-left-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+
+  img {
+    height: 50px;
+    width: 120px;
+    margin-right: 120px;
+  }
+}
+.menu-left-title {
+  text-align: center;
+  height: 80px;
+  line-height: 80px;
+  h4 {
+    margin: 0;
+    font-size: 13px;
+  }
+}
+.div-demo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+  width: 220px;
+}
+
+.logo-icon {
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 30px;
+  transition: color 0.3s;
+
+  &:hover {
+    text-decoration: none;
+    color: #fff !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu-left-logo {
+    display: none;
+  }
+}

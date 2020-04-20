@@ -1,0 +1,26 @@
+.search-form {
+  margin-top: 20px !important;
+  padding: 24px 24px !important;
+  background: #fbfbfb;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+
+  .ant-form-item {
+    display: flex;
+    justify-content: center;
+
+    .ant-form-item-label {
+      margin-right: 10px;
+      // text-align: left;
+      // white-space: nowrap;
+    }
+  }
+}
+
+.search-form-button {
+  display: flex;
+  margin-bottom: 0 !important;
+  div {
+    align-self: flex-end;
+  }
+}
