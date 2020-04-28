@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
-import DashboardHeader from '../Components/dashboard/DashboardHeader';
-import DashboardFooter from '../Components/dashboard/DashboardFooter';
-import AppMenu from '../Components/menu/AppMenu';
+import DashboardHeader from '../components/dashboard/DashboardHeader';
+import DashboardFooter from '../components/dashboard/DashboardFooter';
+import AppMenu from '../components/menu/AppMenu';
 
 export default function DashboardPageLayout(props) {
     const { Sider } = Layout;
     const { children } = props;
     const [collapsed, setCollapsed] = useState(false);
-    const [visibleDrawer, setVisibleDrawer] = useState(false);
+    const [isBroken, setIsBroken] = useState(false);
 
     const toggleCollapsedLeft = () => {
         setCollapsed(!collapsed);
     };
 
-    const onClose = () => {
-        setVisibleDrawer(false);
+    const onClose = (broken) => {
+        setIsBroken(broken);
+        // console.log(broken);
     };
 
     return (
@@ -23,17 +24,17 @@ export default function DashboardPageLayout(props) {
             <Sider
                 className="sider-left"
                 trigger={null}
+                width={isBroken ? 0 : 320}
                 collapsible
                 collapsed={collapsed}
-                width={320}
-                collapsedWidth={80}
+                collapsedWidth={isBroken ? 0 : 80}
                 breakpoint={'md'}
-                onBreakpoint={onClose}
+                onBreakpoint={(broken) => onClose(broken)}
             >
-                <AppMenu toggleCollapsed={toggleCollapsedLeft} collapsed={collapsed} />
+                <AppMenu isBroken={isBroken} toggleCollapsed={toggleCollapsedLeft} collapsed={collapsed} />
             </Sider>
             <Layout>
-                <DashboardHeader />
+                <DashboardHeader isBroken={isBroken} />
                 {children}
                 <DashboardFooter />
             </Layout>

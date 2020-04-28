@@ -1,9 +1,9 @@
+import { Breadcrumb, Layout } from 'antd';
 import React from 'react';
-import { Layout, Breadcrumb } from 'antd';
-// import { Icon as LegacyIcon } from '@ant-design/compatible';
-import DashboardPageLayout from '../Layout/DashboardPageLayout';
-import PageContent from '../Components/common/PageContent';
-import ConfigurationUserFamilyForm from '../Components/form/ConfigurationUserFamilyForm';
+
+import { PageContent } from '../components/common';
+import ConfigurationUserFamilyForm from '../components/form/ConfigurationUserFamilyForm';
+import DashboardPageLayout from '../layout/DashboardPageLayout';
 
 export default function ConfiguracionUsuario() {
     const { Content } = Layout;

@@ -1,15 +1,19 @@
-import React from 'react';
 import { Layout } from 'antd';
-import DashboardPageLayout from '../Layout/DashboardPageLayout';
+import React from "react";
+// import { useSelector } from 'react-redux';
+
+import DashboardPageLayout from '../layout/DashboardPageLayout';
 
 export default function AsignacionProductoRutina() {
     const { Content } = Layout;
 
+    // const idPokemon = useSelector(state => state.configurationUserFamily.idPokemon)
+
     return (
         <DashboardPageLayout>
             <Content>
-                <div>Asignacion Producto Rutina ...</div>
+                <div>asignación producto rutina ...</div>
             </Content>
         </DashboardPageLayout>
     )
-}
+} 

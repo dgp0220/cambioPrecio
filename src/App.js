@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import { Login, Home, AsignacionProductoRutina, ConfiguracionUsuario } from './Pages';
+import React from 'react';
+import RoutesComponent from './components/routes/RoutesComponent';
 import './App.css';
 
+//redux
+import { ConnectedRouter } from 'connected-react-router';
+import configStore, { getHistory } from './store';
+import { Provider } from 'react-redux';
+
 export default function App() {
+    const store = configStore();
     return (
-        <Router>
-            <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/" exact component={Home} />
-                <Route path="/home" component={Home} />
-                <Route path="/seguridad/configuracion-usuario" component={ConfiguracionUsuario} />
-                <Route path="/asignacion-productos/rutina" component={AsignacionProductoRutina} />
-            </Switch>
-        </Router>
+        <Provider store={store}>
+            <ConnectedRouter history={getHistory()}>
+                <RoutesComponent />
+            </ConnectedRouter>
+
+        </Provider>
     )
 }

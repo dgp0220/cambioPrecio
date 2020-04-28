@@ -8,11 +8,12 @@ import {
 } from '@ant-design/icons';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import DatosAppMenu from '../../../datos/datos';
+import Logo from '../../../assets/images/logo.png';
 
 import './appMenu.scss';
 
 export default function AppMenu(props) {
-  const { toggleCollapsed, collapsed } = props;
+  const { toggleCollapsed, collapsed, isBroken } = props;
   const { SubMenu, Item } = Menu;
   const headerColor = collapsed ? 'rgba(255, 255, 255, 0.65)' : '#cac400';
   const history = useHistory();
@@ -25,7 +26,7 @@ export default function AppMenu(props) {
 
   const locationState = (location && location.state) || initialMenuState;
 
-  console.log(locationState, history);
+  // console.log(locationState, history);
 
   const [currentMenuKey, setCurrentMenuKey] = useState(locationState.menuKey);
   const [parentMenuKey, setParentMenuKey] = useState(
@@ -41,30 +42,34 @@ export default function AppMenu(props) {
 
   return (
     <Fragment>
-      <div className="menu-left-logo">
-        {!collapsed && (
-          <div className="div-demo">
-            <Link to="/home">{/* <img src={Logo} alt="logo" /> */}</Link>
-          </div>
-        )}
-        <ButtonCollapsed
-          collapsed={collapsed}
-          toggleCollapsed={toggleCollapsed}
-        />
-      </div>
-      <div className="menu-left-title">
+      {!isBroken && (
+        <div className='menu-left-logo'>
+          {!collapsed && (
+            // <div className="div-demo">
+            <Link to='/home'>
+              <img src={Logo} alt='logo' />
+            </Link>
+            // </div>
+          )}
+          <ButtonCollapsed
+            collapsed={collapsed}
+            toggleCollapsed={toggleCollapsed}
+          />
+        </div>
+      )}
+      <div className='menu-left-title'>
         <h4 style={{ color: headerColor }}>
           {collapsed ? '...' : 'MENÚ APLICACIÓN'}
         </h4>
       </div>
       <Menu
-        theme="dark"
+        theme='dark'
         defaultSelectedKeys={currentMenuKey}
-        mode="inline"
+        mode='inline'
         defaultOpenKeys={parentMenuKey}
       >
         <SubMenu
-          key="seguridad"
+          key='seguridad'
           title={
             <span>
               <MoneyCollectOutlined />
@@ -73,7 +78,7 @@ export default function AppMenu(props) {
           }
         >
           <Item
-            key="configuracion_usuario"
+            key='configuracion_usuario'
             onClick={() =>
               navigatePage(
                 ['configuracion_usuario'],
@@ -87,7 +92,7 @@ export default function AppMenu(props) {
           </Item>
         </SubMenu>
         <SubMenu
-          key="asignacion_productos"
+          key='asignacion_productos'
           title={
             <span>
               <MoneyCollectOutlined />
@@ -96,7 +101,7 @@ export default function AppMenu(props) {
           }
         >
           <Item
-            key="asignacion_productos_rutina"
+            key='asignacion_productos_rutina'
             onClick={() =>
               navigatePage(
                 ['asignacion_productos_rutina'],
@@ -110,7 +115,7 @@ export default function AppMenu(props) {
           </Item>
         </SubMenu>
         <SubMenu
-          key="solicitud_cambio"
+          key='solicitud_cambio'
           title={
             <span>
               <MoneyCollectOutlined />
@@ -118,7 +123,7 @@ export default function AppMenu(props) {
             </span>
           }
         >
-          <Item key="registro_solicitud_cambio">
+          <Item key='registro_solicitud_cambio'>
             <DashboardOutlined />
             <span>{'Registro Solicitud Cambio PVP'}</span>
           </Item>
